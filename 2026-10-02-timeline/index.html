@@ -82,7 +82,7 @@ q{quotes:"\201C" "\201D"}
 .seg-wait{fill:var(--wait)}
 .seg-fc{fill:url(#hatch)}
 .seglab{fill:#fff;font:500 10.5px var(--sans);pointer-events:none}
-.seglab.dark{fill:var(--ink)}
+.seglab.dark{fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
 .mark{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 3}
 .markt{fill:var(--ink);font:500 11px var(--sans)}
 .today{stroke:var(--muted);stroke-width:1}
@@ -171,7 +171,7 @@ a{color:var(--slate)}
         <ol>
           <li><b>"We told you custom elements take longer."</b> No call or email says so. The first mention anywhere is Valentyna's email on Sep 29.</li>
           <li><b>"The 3 months didn't include custom work."</b> The first answer she got was <q>around three months… since we're all custom</q>.</li>
-          <li><b>Production drawings and calculation/setup</b> — about 4 weeks after payment — were never in the timeline she was shown.</li>
+          <li><b>Production drawings and calculation/setup</b> — 25 days after payment, Sep 10 → ~Oct 5 — were never in the timeline she was shown.</li>
         </ol>
       </div>
     </div>
@@ -210,22 +210,21 @@ a{color:var(--slate)}
     <div class="head">
       <span class="label">Plan vs forecast</span>
       <h2 id="s-plan">Where the time went</h2>
-      <p class="lede">Top bar: the stage lengths Shiva was shown, started on the real drawings start date (Aug 3). They land on Nov 30, right on her target. Bottom bar: what actually happened, and the current forecast.</p>
+      <p class="lede">Production starts only after full payment, the next day. Shiva paid on Sep 9, so the expected timeline starts production on <b>Sep 10</b>. Top bar: the stage lengths she was shown, counted from there — pickup Oct 22, delivery by sea around <b>Dec 24</b>. Bottom bar: the current forecast — pickup ~Nov 23, delivery ~Jan 25.</p>
     </div>
     <div class="legend">
       <span><i class="sw p"></i>Presented stage</span>
       <span><i class="sw o"></i>Over, or not in the presented timeline</span>
-      <span><i class="sw w"></i>Waiting on client payment</span>
-      <span><i class="sw f"></i>Forecast</span>
+      <span><i class="sw f"></i>Sea shipping (9 wk standard)</span>
     </div>
-    <div class="chart"><svg id="gantt" viewBox="0 0 1000 300" role="img" aria-label="Presented stages from Aug 3 end on Nov 30. Actual: drawings ran to Sep 1, payment Sep 9, production drawings and setup to Oct 5, production 35 days to Nov 9, pre-assembly to Nov 24, sea shipping forecast to late January — about 8 weeks after Nov 30."></svg></div>
+    <div class="chart"><svg id="gantt" viewBox="0 0 1000 300" role="img" aria-label="Expected, from production start Sep 10: production to Oct 8, pre-assembly to Oct 22, sea delivery about Dec 24. Forecast: production drawings and setup Sep 10 to about Oct 5, production 35 days to Nov 9, pre-assembly to Nov 23, sea delivery about Jan 25 — 32 days later."></svg></div>
     <div class="sums">
-      <div class="sum"><b>+2 wk</b><span>Technical drawings: 4 weeks instead of 2</span></div>
-      <div class="sum w"><b>+1 wk</b><span>Approval Sep 1 → payment Sep 9 (client travel, bank holiday)</span></div>
-      <div class="sum"><b>+3.5 wk</b><span>Production drawings + calculation/setup, never in the timeline</span></div>
-      <div class="sum"><b>+1 wk</b><span>Production 35 days, not 28, for handcrafted fluted/radius pieces</span></div>
+      <div class="sum"><b>+25 days</b><span>Production drawings + calculation/setup (Sep 10 → ~Oct 5): never in the timeline she was shown</span></div>
+      <div class="sum"><b>+7 days</b><span>Production 35 days, not 28, for handcrafted fluted/radius pieces</span></div>
+      <div class="sum"><b>= 32 days</b><span>≈ 4.6 weeks later than the expected timeline, at pickup and at delivery</span></div>
+      <div class="sum w"><b>Nov 30</b><span>Shiva's "end of November" was already behind the expected sea delivery (~Dec 24)</span></div>
     </div>
-    <p class="small">Derived: the top bar applies the presented stage lengths to real dates. Pre-assembly 2 wk is from Bruna's timeline slide as described on Oct 2; it is not in the Jun 10 recap. Dates after Sep 9 are from Valentyna and Juliia on the Oct 2 call, not from documents. The 9-week sea leg is the standard figure, not a booking. Today is marked in grey.</p>
+    <p class="small">Derived: presented stage lengths (production 4 wk, pre-assembly 2 wk, sea 9 wk) applied from Sep 10. Pre-assembly 2 wk is from Bruna's timeline slide as described on Oct 2; it is not in the Jun 10 recap. The production launch (~Oct 5) and later dates are from Valentyna and Juliia on the Oct 2 call, not from documents; the launch may slip to Oct 7. The 9-week sea leg is the standard figure, not a booking. Before Sep 10, for context only: technical drawings ran Aug 3 → Sep 1 (4 weeks; 2 were presented), approval came Sep 1, and full payment Sep 9. Today is marked in grey.</p>
   </section>
 
   <section aria-labelledby="s-log">
@@ -322,7 +321,7 @@ a{color:var(--slate)}
       </ul>
       <ul>
         <li><b>"Nothing was said about custom items and time"</b> holds for everything read. It is not yet confirmed against the seven design-session transcripts.</li>
-        <li><b>The plan-vs-forecast chart is derived</b>: presented stage lengths applied to real dates. Post-payment dates are from the Oct 2 call.</li>
+        <li><b>The plan-vs-forecast chart is derived</b>: presented stage lengths applied from Sep 10 (production starts the day after full payment). Post-payment dates are from the Oct 2 call.</li>
         <li><b>Speaker labels:</b> in the discovery and proposal transcripts, "Corner Renovation" is the hello@ account, attributed here to Kostya.</li>
         <li>Texts between Bruna and Shiva were not available.</li>
       </ul>
@@ -381,14 +380,14 @@ a{color:var(--slate)}
   // Gantt
   var NS="http://www.w3.org/2000/svg", s=document.getElementById("gantt");
   function el(t,a,txt){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e;}
-  var d0=new Date("2026-08-01"), d1=new Date("2027-02-01"), L=170, R=985;
+  var d0=new Date("2026-09-01"), d1=new Date("2027-02-01"), L=170, R=985;
   function x(d){return L+(R-L)*(new Date(d)-d0)/(d1-d0);}
   var defs=el("defs",{}), pat=el("pattern",{id:"hatch",width:6,height:6,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"});
   var cs=getComputedStyle(document.documentElement);
   pat.appendChild(el("rect",{width:6,height:6,fill:"transparent"}));
   pat.appendChild(el("line",{x1:0,y1:0,x2:0,y2:6,stroke:cs.getPropertyValue("--slate").trim()||"#35536C","stroke-width":3}));
   defs.appendChild(pat); s.appendChild(defs);
-  ["2026-08-01","2026-09-01","2026-10-01","2026-11-01","2026-12-01","2027-01-01","2027-02-01"].forEach(function(d){
+  ["2026-09-01","2026-10-01","2026-11-01","2026-12-01","2027-01-01","2027-02-01"].forEach(function(d){
     var g=el("g",{"class":"tick"}), m=new Date(d);
     g.appendChild(el("line",{x1:x(d),x2:x(d),y1:30,y2:250}));
     var last=d==="2027-02-01";
@@ -396,36 +395,35 @@ a{color:var(--slate)}
     s.appendChild(g);
   });
   var yA=70, yB=160, h=34;
-  s.appendChild(el("text",{x:10,y:yA+15,"class":"band"},"Presented"));
-  s.appendChild(el("text",{x:10,y:yA+31,"class":"bandsub"},"stage lengths, from Aug 3"));
-  s.appendChild(el("text",{x:10,y:yB+15,"class":"band"},"Actual + forecast"));
+  s.appendChild(el("text",{x:10,y:yA+15,"class":"band"},"Expected"));
+  s.appendChild(el("text",{x:10,y:yA+31,"class":"bandsub"},"presented stages, from Sep 10"));
+  s.appendChild(el("text",{x:10,y:yB+15,"class":"band"},"Forecast"));
   s.appendChild(el("text",{x:10,y:yB+31,"class":"bandsub"},"as of Oct 2"));
   function seg(y,a,b,cls,lab,dark,title){
     var r=el("rect",{x:x(a),y:y,width:Math.max(1,x(b)-x(a)),height:h,"class":cls});
     r.appendChild(el("title",{},title||lab)); s.appendChild(r);
     if(lab && x(b)-x(a)>30) s.appendChild(el("text",{x:(x(a)+x(b))/2,y:y+h/2+4,"text-anchor":"middle","class":"seglab"+(dark?" dark":"")},lab));
   }
-  seg(yA,"2026-08-03","2026-08-17","seg-plan","TD","", "Technical drawings · 2 weeks");
-  seg(yA,"2026-08-17","2026-09-14","seg-plan","Production 4 wk");
-  seg(yA,"2026-09-14","2026-09-28","seg-plan","Pre-asm","", "Pre-assembly · 2 weeks (Bruna's slide, as described Oct 2)");
-  seg(yA,"2026-09-28","2026-11-30","seg-fc","Sea 9 wk",true);
-  seg(yB,"2026-08-03","2026-08-17","seg-plan","TD","", "Technical drawings · planned 2 weeks");
-  seg(yB,"2026-08-17","2026-09-01","seg-over","+2 wk","", "Technical drawings overrun · Aug 17 → Sep 1");
-  seg(yB,"2026-09-01","2026-09-09","seg-wait","","", "Approval Sep 1 → payment Sep 9");
-  seg(yB,"2026-09-09","2026-10-05","seg-over","PD + setup","", "VR production drawings + review + calculation/setup · Sep 9 → ~Oct 5");
+  seg(yA,"2026-09-10","2026-10-08","seg-plan","Production 4 wk","", "Production · 4 weeks · Sep 10 → Oct 8");
+  seg(yA,"2026-10-08","2026-10-22","seg-plan","Pre-asm","", "Pre-assembly · 2 weeks (Bruna's slide, as described Oct 2) → pickup Oct 22");
+  seg(yA,"2026-10-22","2026-12-24","seg-fc","Sea 9 wk → ~Dec 24",true);
+  seg(yB,"2026-09-10","2026-10-05","seg-over","PD + setup","", "VR production drawings + review + calculation/setup · Sep 10 → ~Oct 5 · not in the presented timeline");
   seg(yB,"2026-10-05","2026-11-02","seg-plan","Production","", "Production · 28 days");
   seg(yB,"2026-11-02","2026-11-09","seg-over","","", "Production +7 days · fluted/radius handcraft");
-  seg(yB,"2026-11-09","2026-11-24","seg-plan","Pre-asm","", "Pre-assembly, QC, packaging → pickup ~Nov 24");
-  seg(yB,"2026-11-24","2027-01-26","seg-fc","Sea 9 wk (forecast)",true);
+  seg(yB,"2026-11-09","2026-11-23","seg-plan","Pre-asm","", "Pre-assembly, QC, packaging → pickup ~Nov 23–24");
+  seg(yB,"2026-11-23","2027-01-25","seg-fc","Sea 9 wk → ~Jan 25",true);
   // markers
+  s.appendChild(el("line",{x1:x("2026-09-10"),x2:x("2026-09-10"),y1:46,y2:250,"class":"today"}));
+  s.appendChild(el("text",{x:x("2026-09-10")+4,y:40,"class":"todayt"},"Sep 10 · day after full payment"));
   s.appendChild(el("line",{x1:x("2026-11-30"),x2:x("2026-11-30"),y1:22,y2:250,"class":"mark"}));
   s.appendChild(el("text",{x:x("2026-11-30")+6,y:34,"class":"markt"},"Nov 30 · Shiva's “end of November”"));
-  s.appendChild(el("line",{x1:x("2026-10-02"),x2:x("2026-10-02"),y1:46,y2:250,"class":"today"}));
-  s.appendChild(el("text",{x:x("2026-10-02")+4,y:56,"class":"todayt"},"today"));
-  // gap bracket
+  s.appendChild(el("line",{x1:x("2026-10-02"),x2:x("2026-10-02"),y1:58,y2:250,"class":"today"}));
+  s.appendChild(el("text",{x:x("2026-10-02")+4,y:64,"class":"todayt"},"today"));
+  // gap bracket: expected vs forecast delivery
   var gy=yB+h+22;
-  s.appendChild(el("line",{x1:x("2026-11-30"),x2:x("2027-01-26"),y1:gy,y2:gy,stroke:"currentColor","class":"seg-over",style:"stroke:var(--walnut);stroke-width:2"}));
-  s.appendChild(el("text",{x:(x("2026-11-30")+x("2027-01-26"))/2,y:gy+16,"text-anchor":"middle","class":"gapt"},"≈ 8 weeks after Nov 30"));
+  s.appendChild(el("line",{x1:x("2026-12-24"),x2:x("2027-01-25"),y1:gy,y2:gy,style:"stroke:var(--walnut);stroke-width:2"}));
+  s.appendChild(el("line",{x1:x("2026-12-24"),x2:x("2026-12-24"),y1:yA+h,y2:gy,style:"stroke:var(--walnut);stroke-width:1;stroke-dasharray:2 3"}));
+  s.appendChild(el("text",{x:(x("2026-12-24")+x("2027-01-25"))/2,y:gy+16,"text-anchor":"middle","class":"gapt"},"+32 days (≈ 4.6 wk)"));
 })();
 </script>
 </body>
