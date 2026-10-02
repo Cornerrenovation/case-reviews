@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kitchen Timeline Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F2F3EF; --surface:#FFFFFF; --ink:#1B221F; --muted:#5C6A64; --faint:#8A968F;
+  --rule:#D3D9D3; --walnut:#8A4B26; --walnut-soft:#F2E3D6; --slate:#35536C; --slate-soft:#E1E8EE;
+  --wait:#B9C0BB; --ring:#1B221F;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#121614; --surface:#1A1F1D; --ink:#E6EBE7; --muted:#9FAAA4; --faint:#6F7B75;
+    --rule:#2C3430; --walnut:#D08F62; --walnut-soft:#35271E; --slate:#8FB2CF; --slate-soft:#1D2A34; --wait:#4A534F; --ring:#E6EBE7;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#121614; --surface:#1A1F1D; --ink:#E6EBE7; --muted:#9FAAA4; --faint:#6F7B75;
+  --rule:#2C3430; --walnut:#D08F62; --walnut-soft:#35271E; --slate:#8FB2CF; --slate-soft:#1D2A34; --wait:#4A534F; --ring:#E6EBE7;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0}
+h2{font-size:clamp(24px,3.2vw,32px);line-height:1.15;letter-spacing:-.01em}
+h3{font-size:19px;line-height:1.25}
+p{margin:0;max-width:68ch}
+.label{font:500 11px/1.3 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+section{display:grid;gap:18px;padding-block:44px;border-top:1px solid var(--rule)}
+.head{display:grid;gap:8px}
+.lede{color:var(--muted);font-size:16px}
+.small{font-size:13.5px;color:var(--muted)}
+q,.q{font-family:var(--display);font-style:italic}
+q{quotes:"\201C" "\201D"}
+
+/* title block */
+.titleblock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--ink);background:var(--surface)}
+.titleblock>div{padding:10px 12px;border-right:1px solid var(--rule);display:grid;gap:2px}
+.titleblock>div:last-child{border-right:0}
+.titleblock .v{font:500 13px/1.35 var(--mono)}
+@media (max-width:720px){.titleblock{grid-template-columns:1fr 1fr}.titleblock>div:nth-child(2){border-right:0}.titleblock>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}}
+
+/* hero */
+.hero{display:grid;gap:22px;padding-block:36px 40px}
+.hero h1{font-size:clamp(34px,6vw,56px);line-height:1.03;letter-spacing:-.02em;max-width:18ch}
+.hero h1 em{font-style:italic;color:var(--walnut)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--rule);padding:18px;display:grid;gap:12px;align-content:start}
+.panel.yes{border-top:3px solid var(--slate)}
+.panel.no{border-top:3px solid var(--walnut)}
+.panel ol{margin:0;padding-left:20px;display:grid;gap:9px;font-size:14.5px}
+.panel li b{font-weight:600}
+
+/* answer cards */
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.answers{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--rule);padding:18px;display:grid;gap:10px;align-content:start}
+.card .k{font:500 12px var(--mono);color:var(--walnut);letter-spacing:.06em;text-transform:uppercase}
+.card blockquote{margin:0;padding-left:12px;border-left:2px solid var(--rule);font:400 17px/1.4 var(--display);font-style:italic}
+.card blockquote footer{font:12px var(--mono);font-style:normal;color:var(--muted);margin-top:4px}
+
+/* chart */
+.chart{background:var(--surface);border:1px solid var(--rule);padding:14px 12px 10px;overflow-x:auto}
+.chart svg{display:block;width:100%;min-width:680px;height:auto}
+.tick line{stroke:var(--rule)}
+.tick text,.axl{fill:var(--muted);font:11px var(--mono)}
+.band{fill:var(--ink);font:600 12px var(--sans)}
+.bandsub{fill:var(--muted);font:11px var(--sans)}
+.seg-plan{fill:var(--slate)}
+.seg-over{fill:var(--walnut)}
+.seg-wait{fill:var(--wait)}
+.seg-fc{fill:url(#hatch)}
+.seglab{fill:#fff;font:500 10.5px var(--sans);pointer-events:none}
+.seglab.dark{fill:var(--ink)}
+.mark{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 3}
+.markt{fill:var(--ink);font:500 11px var(--sans)}
+.today{stroke:var(--muted);stroke-width:1}
+.todayt{fill:var(--muted);font:11px var(--mono)}
+.gapt{fill:var(--walnut);font:500 11px var(--sans)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;gap:7px;align-items:center}
+.sw{width:14px;height:10px;display:inline-block;border-radius:1px}
+.sw.p{background:var(--slate)} .sw.o{background:var(--walnut)} .sw.w{background:var(--wait)}
+.sw.f{background:repeating-linear-gradient(45deg,var(--slate) 0 3px,transparent 3px 6px);border:1px solid var(--slate)}
+.sums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.sums{grid-template-columns:1fr 1fr}}
+.sum{border-left:2px solid var(--walnut);padding:2px 0 2px 12px;display:grid;gap:2px}
+.sum.w{border-color:var(--wait)}
+.sum b{font:500 20px/1.1 var(--mono)}
+.sum span{font-size:13px;color:var(--muted)}
+
+/* tables */
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+table.wide{min-width:860px}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+td.d{font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+td.w{white-space:nowrap}
+td.s{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+td.t{font-family:var(--display);font-size:15px;line-height:1.4}
+tr.key td{background:var(--slate-soft)}
+.tag{display:inline-block;font:500 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:2px;white-space:nowrap}
+.tag.est{background:var(--slate-soft);color:var(--slate)}
+.tag.com{background:var(--walnut-soft);color:var(--walnut)}
+.tag.def{background:transparent;color:var(--muted);border:1px solid var(--rule)}
+.tag.cli{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.tag.first{background:var(--walnut);color:#fff}
+.tag.rec{background:transparent;color:var(--walnut);border:1px dashed var(--walnut)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{font:500 12px var(--sans);padding:6px 10px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:2px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+
+/* risk cards */
+.risks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.risks{grid-template-columns:1fr}}
+.risk{background:var(--walnut-soft);border:1px solid var(--rule);padding:16px 18px;display:grid;gap:8px}
+.risk p.q{font-size:18px;line-height:1.35}
+.risk .m{font:12px var(--mono);color:var(--muted)}
+.note{background:var(--slate-soft);border:1px solid var(--rule);padding:16px 18px;display:grid;gap:8px}
+.check{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.check li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14.5px}
+.check li::before{content:"";width:14px;height:14px;border:1.5px solid var(--ink);border-radius:2px;margin-top:4px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media (max-width:760px){.cols{grid-template-columns:1fr}}
+.cols ul{margin:0;padding-left:18px;display:grid;gap:7px;font-size:14px;color:var(--muted)}
+.cols li b{color:var(--ink);font-weight:500}
+:focus-visible{outline:2px solid var(--slate);outline-offset:2px}
+a{color:var(--slate)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="titleblock" role="group" aria-label="Review details">
+    <div><span class="label">Client</span><span class="v">Shiva &amp; Alexis Mendez</span></div>
+    <div><span class="label">Prepared for</span><span class="v">Bruna · Valentyna</span></div>
+    <div><span class="label">Window</span><span class="v">Apr 24 → Oct 2, 2026</span></div>
+    <div><span class="label">Issued</span><span class="v">Oct 2, 2026</span></div>
+  </div>
+
+  <header class="hero">
+    <span class="label">What the record says</span>
+    <h1>It backs us on shipping. <em>Not on the fluted elements.</em></h1>
+    <p class="lede">Shiva says the agreement was <q>shipping 6 weeks after technical documents are approved</q>, plus 4–6 weeks by container, with the kitchen in California by end of November. Every call and email from discovery to today was read against that claim. Sea shipping was always 9 weeks, and every date was an estimate. But nobody ever told her the fluted and radius pieces would take longer to make.</p>
+    <div class="split">
+      <div class="panel yes">
+        <span class="label">Supported — safe to say</span>
+        <ol>
+          <li><b>Sea shipping was presented as 9 weeks.</b> Nobody from Corner ever said 4–6. <span class="tag rec">verify verbatim</span></li>
+          <li><b>Every date was hedged</b> — "around", "target", "likely", "depending on the scope".</li>
+          <li><b>The exact timeline was deferred to later stages, in writing</b> — Jul 15, Sep 2, Sep 10, Sep 25.</li>
+          <li><b>Air was offered early with a price</b> (~$15k), and Shiva wrote she couldn't handle the container wait.</li>
+          <li><b>Shiva accepted flexibility in writing</b> — <q>flexible if supply chain issues delay any particular item</q>.</li>
+          <li><b>She made changes during technical drawings</b> — review revisions, dimension notes, a missing microwave model, 7 comments.</li>
+        </ol>
+      </div>
+      <div class="panel no">
+        <span class="label">Not supported — don't claim</span>
+        <ol>
+          <li><b>"We told you custom elements take longer."</b> No call or email says so. The first mention anywhere is Valentyna's email on Sep 29.</li>
+          <li><b>"The 3 months didn't include custom work."</b> The first answer she got was <q>around three months… since we're all custom</q>.</li>
+          <li><b>Production drawings and calculation/setup</b> — about 4 weeks after payment — were never in the timeline she was shown.</li>
+        </ol>
+      </div>
+    </div>
+  </header>
+
+  <section aria-labelledby="s-ans">
+    <div class="head">
+      <span class="label">Bruna's four questions</span>
+      <h2 id="s-ans">Answers, each with the line that carries it</h2>
+    </div>
+    <div class="answers">
+      <article class="card">
+        <span class="k">a · What was agreed</span>
+        <p>Nothing was signed as a date. What she was <b>shown</b> was the Jun 10 plan: drawings 2 wk → production 4 wk → pre-assembly 2 wk → sea 9 wk → <b>target late November</b>, with air as a paid backup to decide in September.</p>
+        <blockquote>"Standard Shipping: 9 weeks → Target Delivery: Late November. Expedited Shipping: A quote will be provided for a 2-week option as a contingency."<footer>Jun 10 design session · Fathom AI recap — verify against the transcript</footer></blockquote>
+      </article>
+      <article class="card">
+        <span class="k">b · What was an estimate</span>
+        <p>Every number Corner gave. The clearest is the answer to her direct question at the proposal.</p>
+        <blockquote>"It's around three months, three to three and a half, depending on the scope. And it's standard."<footer>Kostya · proposal May 5 [00:57:08]</footer></blockquote>
+      </article>
+      <article class="card">
+        <span class="k">c · When she'd get the final timeline</span>
+        <p>Always "after the next step." Real production dates first arrived <b>Sep 29 — four weeks after she paid</b>, after three deferrals.</p>
+        <blockquote>"Once we move to the next step we'll be able to provide an exact production and delivery timeline."<footer>Bruna · email Jul 15</footer></blockquote>
+      </article>
+      <article class="card">
+        <span class="k">d · What was said about custom items</span>
+        <p>The fluted and radius pieces were discussed as design and cost — never as time. Bruna confirmed it on the internal call.</p>
+        <blockquote>"the round corner and the fluted panel that we didn't know it would take longer. I specifically didn't know."<footer>Bruna · internal call Oct 2</footer></blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="s-plan">
+    <div class="head">
+      <span class="label">Plan vs forecast</span>
+      <h2 id="s-plan">Where the time went</h2>
+      <p class="lede">Top bar: the stage lengths Shiva was shown, started on the real drawings start date (Aug 3). They land on Nov 30, right on her target. Bottom bar: what actually happened, and the current forecast.</p>
+    </div>
+    <div class="legend">
+      <span><i class="sw p"></i>Presented stage</span>
+      <span><i class="sw o"></i>Over, or not in the presented timeline</span>
+      <span><i class="sw w"></i>Waiting on client payment</span>
+      <span><i class="sw f"></i>Forecast</span>
+    </div>
+    <div class="chart"><svg id="gantt" viewBox="0 0 1000 300" role="img" aria-label="Presented stages from Aug 3 end on Nov 30. Actual: drawings ran to Sep 1, payment Sep 9, production drawings and setup to Oct 5, production 35 days to Nov 9, pre-assembly to Nov 24, sea shipping forecast to late January — about 8 weeks after Nov 30."></svg></div>
+    <div class="sums">
+      <div class="sum"><b>+2 wk</b><span>Technical drawings: 4 weeks instead of 2</span></div>
+      <div class="sum w"><b>+1 wk</b><span>Approval Sep 1 → payment Sep 9 (client travel, bank holiday)</span></div>
+      <div class="sum"><b>+3.5 wk</b><span>Production drawings + calculation/setup, never in the timeline</span></div>
+      <div class="sum"><b>+1 wk</b><span>Production 35 days, not 28, for handcrafted fluted/radius pieces</span></div>
+    </div>
+    <p class="small">Derived: the top bar applies the presented stage lengths to real dates. Pre-assembly 2 wk is from Bruna's timeline slide as described on Oct 2; it is not in the Jun 10 recap. Dates after Sep 9 are from Valentyna and Juliia on the Oct 2 call, not from documents. The 9-week sea leg is the standard figure, not a booking. Today is marked in grey.</p>
+  </section>
+
+  <section aria-labelledby="s-log">
+    <div class="head">
+      <span class="label">Everything said about time</span>
+      <h2 id="s-log">The full record, in order</h2>
+      <p class="small">Recap rows come from AI meeting summaries (Fathom and Zoom), not transcripts. Check them word for word before quoting them to Shiva.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter statements">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="est">Estimates</button>
+      <button type="button" data-f="com">Firm-sounding</button>
+      <button type="button" data-f="def">Deferrals</button>
+      <button type="button" data-f="cli">Shiva &amp; Alexis</button>
+    </div>
+    <div class="tablewrap"><table class="wide">
+      <thead><tr><th>Date</th><th>Who</th><th>Type</th><th>What was said</th><th>Source</th></tr></thead>
+      <tbody id="log"></tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="s-custom">
+    <div class="head">
+      <span class="label">Custom items</span>
+      <h2 id="s-custom">Fluted and radius elements: in the design from June, in the timeline from September 29</h2>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Date</th><th>What happened</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td class="d">Apr 24</td><td>Kostya shows a reference kitchen with <q>that fluted element, like a rounded curved island</q> — as inspiration</td><td class="s">discovery [00:25:46]</td></tr>
+        <tr><td class="d">May 5</td><td>Fluted <b>glass</b> doors already in the first design</td><td class="s">proposal [00:20:18]</td></tr>
+        <tr><td class="d">Jun 22</td><td>Fluted <b>wood</b> panels added (pantry ends, laundry wall), plus a <q>rounded, fluted corner</q></td><td class="s">recap</td></tr>
+        <tr><td class="d">Jun 29</td><td><q>fluted yellow panel and curved corner elements that Alexis approved</q></td><td class="s">recap (Zoom)</td></tr>
+        <tr><td class="d">Jul 7</td><td>Cost up ~$17k to ~$92k, <q>primarily from fluted panels (~$4k) and premium materials</q></td><td class="s">recap (Fathom)</td></tr>
+        <tr><td class="d">Jul 14</td><td>Shiva: <q>The fluted panels are fine.</q></td><td class="s">email</td></tr>
+        <tr><td class="d">Aug 14</td><td>Fluting removed from the fridge-wall entry side; round corner approved</td><td class="s">recap</td></tr>
+        <tr><td class="d">Sep 2</td><td>Bruna: <q>Removed one of the fluted panels</q></td><td class="s">email</td></tr>
+        <tr class="key"><td class="d">Sep 29</td><td><b>First mention anywhere that they add production time</b> — <q>approximately 35 calendar days due to the additional time needed for the handcrafted fluted radius element and other fluted details</q></td><td class="s">Valentyna · email</td></tr>
+        <tr><td class="d">Oct 1</td><td>Shiva: <q>If the fluted handles were a hurdle and required additional time, nothing was mentioned about this throughout the design process.</q></td><td class="s">email</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">The only link anywhere between scope and lead time is "depending on the scope" (May 5). On Oct 2 Bruna said the one longer-lead option she had warned about was solid-wood drawers — "but not [fluted]."</p>
+  </section>
+
+  <section aria-labelledby="s-risk">
+    <div class="head">
+      <span class="label">Expect to hear these back</span>
+      <h2 id="s-risk">Four lines Shiva can quote at us</h2>
+    </div>
+    <div class="risks">
+      <div class="risk"><span class="label">Aug 6 · Bruna · email</span><p class="q">"Everything is going according to plan and on schedule."</p><span class="m">Sent when technical drawings had just started — about a month after the Jun 10 plan put them in early July.</span></div>
+      <div class="risk"><span class="label">Jul 15 · Bruna · email</span><p class="q">"Based on the current production schedule, you would likely receive everything by late September or early October."</p><span class="m">The air-freight estimate: a dated window, in writing.</span></div>
+      <div class="risk"><span class="label">Jun 10 · design session · recap</span><p class="q">"A 10% deposit locks in the production schedule and container booking, mitigating delays."</p><span class="m">If these are the actual words, they read as a commitment. Check the transcript.</span></div>
+      <div class="risk"><span class="label">Sep 1 &amp; Sep 29 · Shiva · email</span><p class="q">"hoping that we can get on a container in October and be here in November" · "2 weeks? 4 weeks?"</p><span class="m">Her 4-week container assumption was visible twice, and no reply restated 9 weeks.</span></div>
+    </div>
+    <div class="note">
+      <span class="label">Correction to the Oct 2 internal call</span>
+      <p>The call assumed Shiva made no changes during technical drawings. She did:</p>
+      <ul style="margin:0;padding-left:18px">
+        <li>revisions at the Aug 14 review (beam clearance, fluting, waterfall edge)</li>
+        <li>her dimension notes on Aug 18</li>
+        <li>the microwave model still missing on Aug 24</li>
+        <li>seven comments on Aug 30, then approval on Sep 1</li>
+      </ul>
+      <p>That is part of why the stage took 4 weeks, and it's a point in our favour.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="s-verify">
+    <div class="head">
+      <span class="label">Before the client call</span>
+      <h2 id="s-verify">Still to verify</h2>
+    </div>
+    <ul class="check">
+      <li><span><b>Jun 10 transcript, verbatim:</b> the 9-week shipping line, "target delivery late November", and the "10% locks the production schedule and container booking" line.</span></li>
+      <li><span><b>Jun 22 → Aug 14 transcripts:</b> any sentence linking custom or fluted elements, or scope, to time — including Bruna's recollection about solid-wood drawers.</span></li>
+      <li><span><b>Bruna's timeline slide</b> from the start of each design meeting (the one where dates turned red): does it show pre-assembly, and 9 weeks of shipping?</span></li>
+      <li><span><b>Where "kitchen leaving the country on November 1" came from</b> — not found in any call or email read.</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="s-src">
+    <div class="head">
+      <span class="label">Sources &amp; limits</span>
+      <h2 id="s-src">What this was built from</h2>
+    </div>
+    <div class="cols">
+      <ul>
+        <li><b>Discovery, Apr 24</b> (Kostya): full transcript.</li>
+        <li><b>Proposal, May 5</b> (Bruna + Kostya): full transcript.</li>
+        <li><b>Seven design-stage calls</b> — Jun 10, Jun 22, Jun 29, Jul 7, Jul 20, Jul 28, Aug 14: Fathom and Zoom AI recaps only. The full transcripts need a Fathom sign-in as bruna@.</li>
+        <li><b>All 145 emails</b> with Shiva or Alexis in bruna@ and hello@, Apr 20 → Oct 1, full text.</li>
+        <li><b>Internal call, Oct 2</b> (Bruna, Kostya, Valentyna, Juliia): full transcript.</li>
+      </ul>
+      <ul>
+        <li><b>"Nothing was said about custom items and time"</b> holds for everything read. It is not yet confirmed against the seven design-session transcripts.</li>
+        <li><b>The plan-vs-forecast chart is derived</b>: presented stage lengths applied to real dates. Post-payment dates are from the Oct 2 call.</li>
+        <li><b>Speaker labels:</b> in the discovery and proposal transcripts, "Corner Renovation" is the hello@ account, attributed here to Kostya.</li>
+        <li>Texts between Bruna and Shiva were not available.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var LOG=[
+    ["Apr 24","Shiva","cli","“And what's the lead time?”","discovery [00:02:11]"],
+    ["Apr 24","Kostya","est","“It's around three months once we've finalized the design and approved it, since we're all custom.”","discovery [00:02:13]"],
+    ["Apr 24","Shiva","cli","“So the order can go in end of July. I would love to have the installation start in November… I'm hoping to be realistic.”","discovery [00:51:00]"],
+    ["May 5","Shiva","cli","“Tell me again at the lead time, from the time that the order is placed to delivery.”","proposal [00:57:00]"],
+    ["May 5","Kostya","est","“It's around three months, three to three and a half, depending on the scope. And it's standard. We also have an expedited delivery where we use an air delivery, which is like five weeks less.”","proposal [00:57:08]",1],
+    ["May 5","Shiva","cli","“…that gives us August, September, October, a bit of November for shipping. So it should be with us at the beginning of December, which is fine. We have December to install it.”","proposal [00:58:40]"],
+    ["Jun 10","Bruna","est","“Project Timeline: ~4 months, 3 weeks total… Technical Development: 2 weeks. Production: 4 weeks. Standard Shipping: 9 weeks → Target Delivery: Late November.”","recap (Fathom)",1],
+    ["Jun 10","Bruna","com","“A 10% deposit locks in the production schedule and container booking, mitigating delays.”","recap (Fathom)"],
+    ["Jun 10","Bruna","est","“Bruna offered an expedited shipping option that could reduce the timeline from nine weeks to about two weeks for an additional cost.”","recap (Zoom)"],
+    ["Jul 14","Shiva","cli","“Please make sure to include the air freight estimate. I don't think I can handle the wait for container shipping 😊”","email"],
+    ["Jul 15","Bruna","com","“air freight… would be around $15,000. Based on the current production schedule, you would likely receive everything by late September or early October. Once we move to the next step we'll be able to provide an exact production and delivery timeline.”","email",1],
+    ["Jul 15","Shiva","cli","“hopefully we can get started with technical drawings not to have to air freight, but good to know how much it is.”","email"],
+    ["Jul 20","Bruna","def","“A 10% payment will trigger technical drawings, moving the project into the production queue.” (10% paid Jul 20.)","recap (Fathom)"],
+    ["Aug 6","Bruna","com","“As soon as he finishes the first set of drawings, we'll schedule a call… before moving on to the final production drawings. Everything is going according to plan and on schedule.”","email"],
+    ["Aug 22","Shiva","cli","“Just want to make sure we keep [to] the schedule… If there's any adjustments to schedule, please let us know ASAP.”","email"],
+    ["Aug 24","Bruna","def","“We have your project scheduled to finish the drawings this week… The only thing we still need is the final model of the microwave.”","email"],
+    ["Aug 30","Shiva","cli","Seven comments on the final drawings. “I really hope to have this kitchen in California in November 😊”","email"],
+    ["Sep 1","Shiva","cli","“Let's proceed to production… I am still holding contingency for freight, but hoping that we can get on a container in October and be here in November.”","email"],
+    ["Sep 2","Bruna","def","“We'll be sending the project into production tomorrow morning, and then we should have the final timeline for it.”","email"],
+    ["Sep 9","Shiva","cli","Payment sent. “please keep us in the loop… updates on shipping dates and whether we may have to resort to freight.”","email"],
+    ["Sep 10","Shiva","cli","“remain open to alternative freight if timelines are an issue, of course we'd prefer to stick with the original 😊 We are flexible if supply chain issues delay any particular item or finish.” Later the same day: “We really would like this kitchen to be in California by end of November.”","email"],
+    ["Sep 10","Valentyna","def","“the project is currently in the Production Drawings stage… After that… Pre-Production… I'll then be able to share a much more accurate timeline for production, shipping, and delivery.”","email"],
+    ["Sep 25","Valentyna","def","“We're planning to launch production by the end of next week. After that, I'll come back to you with a more precise timeline…”","email"],
+    ["Sep 29","Valentyna","first","“the production cycle is expected to take approximately 35 calendar days due to the additional time needed for the handcrafted fluted radius element and other fluted details… pre-assembly, quality control, and packaging… approximately 2 weeks.”","email",1],
+    ["Sep 29","Shiva","cli","“What is the anticipated shipping duration by container…? 2 weeks? 4 weeks?… I think our original schedule was based on kitchen leaving the country on November 1.”","email"],
+    ["Oct 1","Valentyna","def","“we're currently looking at the logistics stage beginning around November 24.” Doesn't answer the container-duration question.","email"],
+    ["Oct 1","Shiva","cli","“Our agreement is based on shipping 6 weeks after technical documents are approved. And allowing for 4-6 weeks of shipping by container. We need the kitchen in California by end of November, no exceptions.”","email",1]
+  ];
+  var TAG={est:["est","Estimate"],com:["com","Firm-sounding"],def:["def","Deferral"],cli:["cli","Client"],first:["first","First mention"]};
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  var tb=document.getElementById("log");
+  LOG.forEach(function(r){
+    var t=TAG[r[2]], tr=document.createElement("tr");
+    tr.dataset.f=r[2]; if(r[5])tr.className="key";
+    var src=r[4].indexOf("recap")===0?'<span class="tag rec">'+esc(r[4])+'</span>':esc(r[4]);
+    tr.innerHTML='<td class="d">'+esc(r[0])+'</td><td class="w">'+esc(r[1])+'</td><td><span class="tag '+t[0]+'">'+t[1]+'</span></td><td class="t">'+esc(r[3])+'</td><td class="s">'+src+'</td>';
+    tb.appendChild(tr);
+  });
+  var btns=document.querySelectorAll(".filters button");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    btns.forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
+    var f=b.dataset.f;
+    tb.querySelectorAll("tr").forEach(function(tr){tr.hidden=!(f==="all"||tr.dataset.f===f);});
+  });});
+
+  // Gantt
+  var NS="http://www.w3.org/2000/svg", s=document.getElementById("gantt");
+  function el(t,a,txt){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e;}
+  var d0=new Date("2026-08-01"), d1=new Date("2027-02-01"), L=170, R=985;
+  function x(d){return L+(R-L)*(new Date(d)-d0)/(d1-d0);}
+  var defs=el("defs",{}), pat=el("pattern",{id:"hatch",width:6,height:6,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"});
+  var cs=getComputedStyle(document.documentElement);
+  pat.appendChild(el("rect",{width:6,height:6,fill:"transparent"}));
+  pat.appendChild(el("line",{x1:0,y1:0,x2:0,y2:6,stroke:cs.getPropertyValue("--slate").trim()||"#35536C","stroke-width":3}));
+  defs.appendChild(pat); s.appendChild(defs);
+  ["2026-08-01","2026-09-01","2026-10-01","2026-11-01","2026-12-01","2027-01-01","2027-02-01"].forEach(function(d){
+    var g=el("g",{"class":"tick"}), m=new Date(d);
+    g.appendChild(el("line",{x1:x(d),x2:x(d),y1:30,y2:250}));
+    var last=d==="2027-02-01";
+    g.appendChild(el("text",{x:last?x(d)-4:x(d)+4,y:268,"text-anchor":last?"end":"start"},m.toLocaleString("en",{month:"short",timeZone:"UTC"})+(m.getUTCMonth()===0?" ’27":"")));
+    s.appendChild(g);
+  });
+  var yA=70, yB=160, h=34;
+  s.appendChild(el("text",{x:10,y:yA+15,"class":"band"},"Presented"));
+  s.appendChild(el("text",{x:10,y:yA+31,"class":"bandsub"},"stage lengths, from Aug 3"));
+  s.appendChild(el("text",{x:10,y:yB+15,"class":"band"},"Actual + forecast"));
+  s.appendChild(el("text",{x:10,y:yB+31,"class":"bandsub"},"as of Oct 2"));
+  function seg(y,a,b,cls,lab,dark,title){
+    var r=el("rect",{x:x(a),y:y,width:Math.max(1,x(b)-x(a)),height:h,"class":cls});
+    r.appendChild(el("title",{},title||lab)); s.appendChild(r);
+    if(lab && x(b)-x(a)>30) s.appendChild(el("text",{x:(x(a)+x(b))/2,y:y+h/2+4,"text-anchor":"middle","class":"seglab"+(dark?" dark":"")},lab));
+  }
+  seg(yA,"2026-08-03","2026-08-17","seg-plan","TD","", "Technical drawings · 2 weeks");
+  seg(yA,"2026-08-17","2026-09-14","seg-plan","Production 4 wk");
+  seg(yA,"2026-09-14","2026-09-28","seg-plan","Pre-asm","", "Pre-assembly · 2 weeks (Bruna's slide, as described Oct 2)");
+  seg(yA,"2026-09-28","2026-11-30","seg-fc","Sea 9 wk",true);
+  seg(yB,"2026-08-03","2026-08-17","seg-plan","TD","", "Technical drawings · planned 2 weeks");
+  seg(yB,"2026-08-17","2026-09-01","seg-over","+2 wk","", "Technical drawings overrun · Aug 17 → Sep 1");
+  seg(yB,"2026-09-01","2026-09-09","seg-wait","","", "Approval Sep 1 → payment Sep 9");
+  seg(yB,"2026-09-09","2026-10-05","seg-over","PD + setup","", "VR production drawings + review + calculation/setup · Sep 9 → ~Oct 5");
+  seg(yB,"2026-10-05","2026-11-02","seg-plan","Production","", "Production · 28 days");
+  seg(yB,"2026-11-02","2026-11-09","seg-over","","", "Production +7 days · fluted/radius handcraft");
+  seg(yB,"2026-11-09","2026-11-24","seg-plan","Pre-asm","", "Pre-assembly, QC, packaging → pickup ~Nov 24");
+  seg(yB,"2026-11-24","2027-01-26","seg-fc","Sea 9 wk (forecast)",true);
+  // markers
+  s.appendChild(el("line",{x1:x("2026-11-30"),x2:x("2026-11-30"),y1:22,y2:250,"class":"mark"}));
+  s.appendChild(el("text",{x:x("2026-11-30")+6,y:34,"class":"markt"},"Nov 30 · Shiva's “end of November”"));
+  s.appendChild(el("line",{x1:x("2026-10-02"),x2:x("2026-10-02"),y1:46,y2:250,"class":"today"}));
+  s.appendChild(el("text",{x:x("2026-10-02")+4,y:56,"class":"todayt"},"today"));
+  // gap bracket
+  var gy=yB+h+22;
+  s.appendChild(el("line",{x1:x("2026-11-30"),x2:x("2027-01-26"),y1:gy,y2:gy,stroke:"currentColor","class":"seg-over",style:"stroke:var(--walnut);stroke-width:2"}));
+  s.appendChild(el("text",{x:(x("2026-11-30")+x("2027-01-26"))/2,y:gy+16,"text-anchor":"middle","class":"gapt"},"≈ 8 weeks after Nov 30"));
+})();
+</script>
+</body>
+</html>
